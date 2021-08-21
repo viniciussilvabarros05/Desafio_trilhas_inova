@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>calCommission</title>
+</head>
+
+<body>
+
+
+    <header>
+        <h1>calCommission</h1>
+        <div id="form">
+            <input placeholder="Nome do atendente" id="name" type="text">
+            <input min="1" placeholder="Id do produto" id="product" type="number" >
+            <button  onclick ="check_clerk()" id="button">Cadastrar</button>
+        </div>
+
+        <div class="alerta">
+            <h2>Atendente ou produto não cadastrado</h2>
+        </div>
+
+        <div id="footer_form">
+            <img src="./images/icon-facebook.svg">
+            <img src="./images/icon-twitter.svg">
+            <img src="./images/iconmonstr-instagram-11.svg">
+        </div>
+    </header>
+
+
+    <main>
+        <table id="atendentes">
+            <thead>
+                <td>nº</td>
+                <td>atendentes</td>
+            </thead>
+
+            <tbody >
+                <th onclick="back(0)">01</th>
+                <th onclick="back(0)">Vinicius Silva</th>
+            </tbody>
+
+            <tbody >
+                <th onclick="back(1)">02</th>
+                <th onclick="back(1)">Mateus Gomes</th>
+            </tbody>
+
+            <tbody >
+                <th onclick="back(2)">03</th>
+                <th onclick="back(2)">Rosângela Alves</th>
+            </tbody>
+
+
+        </table>
+
+
+    </main>
+    <div class="model">
+        <table id ="table">
+            <thead>
+                <th>nome</th>
+                <th>preço</th>
+                <th>comissão</th>
+            </thead>
+    
+                <tfoot>
+                 <th>TOTAL</th>
+                 <th class=" soma_item">R$0.00</th>
+                  <th class="total_comissão"></th>
+                </tfoot>
+        </table>
+    
+        <button onclick="back(0)" class="button_model">Voltar</button>
+    </div>
+
+    <div class="model1 model">
+        <table id ="table1">
+            <thead>
+                <th>nome</th>
+                <th>preço</th>
+                <th>comissão</th>
+            </thead>
+    
+                <tfoot>
+                 <th>TOTAL</th>
+                 <th class=" soma_item">R$0.00</th>
+                  <th class="total_comissão"></th>
+                </tfoot>
+        </table>
+    
+        <button onclick="back(1)" class="button_model">Voltar</button>
+    </div>
+    <div class="model2 model">
+        <table id ="table2">
+            <thead>
+                <th>nome</th>
+                <th>preço</th>
+                <th>comissão</th>
+            </thead>
+    
+                <tfoot>
+                 <th>TOTAL</th>
+                 <th class=" soma_item">R$0.00</th>
+                  <th class="total_comissão"></th>
+                </tfoot>
+        </table>
+    
+        <button onclick="view_model(2)" class="button_model">Voltar</button>
+    </div>
+
+
+
+    <footer>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
