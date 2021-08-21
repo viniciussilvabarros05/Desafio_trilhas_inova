@@ -104,27 +104,29 @@ th:hover{
     display: block;
 }
 .button_model{
-    margin: 20px;
+    margin: 50px;
     width: 150px;
     height: 50px;
   
 }
 
+
 table{
     
     margin: auto;
+    margin-bottom: 10px;
     width: 90%;
     text-align: center;
-    padding: 0.3rem;
+    padding: 0.1rem;
     background-color: rgb(201, 150, 23);
-    min-width: 100px;
+    min-width: 50px;
     border-radius: 0.8rem;
    
     
 }
 
 #table{
-   width: 40vw;
+   width: 90%;
 }
 
 table th{

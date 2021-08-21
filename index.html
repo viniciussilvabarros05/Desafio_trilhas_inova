@@ -16,8 +16,8 @@
         <h1>calCommission</h1>
         <div id="form">
             <input placeholder="Nome do atendente" id="name" type="text">
-            <input min="1" placeholder="Id do produto" id="product" type="number" >
-            <button  onclick ="check_clerk()" id="button">Cadastrar</button>
+            <input min="1" placeholder="Id do produto" id="product" type="number">
+            <button onclick="check_clerk()" id="button">Cadastrar</button>
         </div>
 
         <div class="alerta">
@@ -39,19 +39,23 @@
                 <td>atendentes</td>
             </thead>
 
-            <tbody >
-                <th onclick="back(0)">01</th>
-                <th onclick="back(0)">Vinicius Silva</th>
+            <tbody>
+                <th>01</th>
+                <th onclick="back()">Vinicius Silva</th>
             </tbody>
 
-            <tbody >
-                <th onclick="back(1)">02</th>
-                <th onclick="back(1)">Mateus Gomes</th>
+            <tbody>
+                <th >02</th>
+                <th onclick="back()">Mateus Gomes</th>
             </tbody>
 
-            <tbody >
-                <th onclick="back(2)">03</th>
-                <th onclick="back(2)">Rosângela Alves</th>
+            <tbody>
+                <th >03</th>
+                <th onclick="back()">Rosângela Alves</th>
+            </tbody>
+            <tbody>
+                <th >04</th>
+                <th onclick="back()">Maicon Santos</th>
             </tbody>
 
 
@@ -60,60 +64,12 @@
 
     </main>
     <div class="model">
-        <table id ="table">
-            <thead>
-                <th>nome</th>
-                <th>preço</th>
-                <th>comissão</th>
-            </thead>
-    
-                <tfoot>
-                 <th>TOTAL</th>
-                 <th class=" soma_item">R$0.00</th>
-                  <th class="total_comissão"></th>
-                </tfoot>
+        <table id="table">
+           
         </table>
-    
-        <button onclick="back(0)" class="button_model">Voltar</button>
+        <button onclick="back()" class="button_model">Voltar</button>
     </div>
-
-    <div class="model1 model">
-        <table id ="table1">
-            <thead>
-                <th>nome</th>
-                <th>preço</th>
-                <th>comissão</th>
-            </thead>
-    
-                <tfoot>
-                 <th>TOTAL</th>
-                 <th class=" soma_item">R$0.00</th>
-                  <th class="total_comissão"></th>
-                </tfoot>
-        </table>
-    
-        <button onclick="back(1)" class="button_model">Voltar</button>
-    </div>
-    <div class="model2 model">
-        <table id ="table2">
-            <thead>
-                <th>nome</th>
-                <th>preço</th>
-                <th>comissão</th>
-            </thead>
-    
-                <tfoot>
-                 <th>TOTAL</th>
-                 <th class=" soma_item">R$0.00</th>
-                  <th class="total_comissão"></th>
-                </tfoot>
-        </table>
-    
-        <button onclick="view_model(2)" class="button_model">Voltar</button>
-    </div>
-
-
-
+   
     <footer>
     </footer>
 
