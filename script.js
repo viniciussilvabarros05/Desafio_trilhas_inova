@@ -2,7 +2,7 @@
 let view = document.querySelector(".model")
 let table = document.getElementById("table")
 let th = document.querySelectorAll("th")
-
+let lista_atendentes = document.getElementById("atendentes")
 let input_name = document.getElementById("name")
 let product = document.getElementById("product")
 let alerta = document.querySelector(".alerta")
@@ -132,7 +132,7 @@ let list_product = [
 
 let atendentes = [
     {
-        id: 0,
+      
         name: "Vinicius Silva",
         lista: [],
         table: ` <table id = "table">
@@ -147,7 +147,7 @@ let atendentes = [
     `
     },
     {
-        id: 1,
+       
         name: "Mateus Gomes",
         lista: [],
         table: `<table id = "table">
@@ -162,7 +162,7 @@ let atendentes = [
     `
     },
     {
-        id: 2,
+       
         name: "Rosângela Alves",
         lista: [],
         table: `
@@ -178,7 +178,7 @@ let atendentes = [
     },
 
     {
-        id: 3,
+      
         name: "Maicon Santos",
         lista: [],
         table: `
@@ -191,7 +191,98 @@ let atendentes = [
        
     
        `
+    },
+    {
+  
+        name: "Gabriel Antonio",
+        lista: [],
+        table: `
+        <table id = "table">
+        <th>nome</th>
+        <th>preço</th>
+        <th>comissão</th>
+           
+        </table>
+       
+    
+       `
+    },
+    {
+       
+        name: "Joana Alves",
+        lista: [],
+        table: `
+        <table id = "table">
+        <th>nome</th>
+        <th>preço</th>
+        <th>comissão</th>
+           
+        </table>
+       
+    
+       `
+    },
+    {
+       
+        name: "Marcela Diniz",
+        lista: [],
+        table: `
+        <table id = "table">
+        <th>nome</th>
+        <th>preço</th>
+        <th>comissão</th>
+           
+        </table>
+       
+    
+       `
     }]
+
+
+    atendentes.forEach(i=>{
+
+        lista_atendentes.innerHTML += `
+      <tbody>
+          <th onclick="back()">${i.name}</th>
+      </tbody>`
+  
+  })
+  
+
+
+function Cadastrar(){
+    const name = atendentes.filter((i) => { return i.name == input_name.value })
+
+    console.log(name)
+    if(name ==""){
+        let newUser={
+            name:input_name.value,
+            lista: [],
+            table: `
+            <table id = "table">
+            <th>nome</th>
+            <th>preço</th>
+            <th>comissão</th>
+               
+            </table>
+           
+        
+        `}
+
+        lista_atendentes.innerHTML += `
+        <tbody>
+            <th onclick="back()">${newUser.name}</th>
+        </tbody>`
+        atendentes.push(newUser)
+        
+    }else{
+     alerta.innerHTML = "Atendente já registrado"
+     return alerta.classList.add("view_actived")
+    }
+
+     
+
+}
 
 function check_clerk() {
     atendentes.forEach(i => {
