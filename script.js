@@ -254,10 +254,11 @@ function Cadastrar(){
     const name = atendentes.filter((i) => { return i.name == input_name.value })
 
     console.log(input_name.value)
-    if (input_name.value = " "){
-        alerta.innerHTML = `<h1>Nome Invalido<h2>`
+    if (input_name.value == ""){
+        alerta.innerHTML = `<h2>Nome Invalido</h2>`
         return alerta.classList.add('view_actived')
     }
+
     if(name ==""){
         let newUser={
             name:input_name.value,
@@ -277,10 +278,11 @@ function Cadastrar(){
         <tbody>
             <th onclick="back()">${newUser.name}</th>
         </tbody>`
+    
         atendentes.push(newUser)
         
     }else{
-     alerta.innerHTML = "Atendente já registrado"
+     alerta.innerHTML = `<h2>Atendente já registrado</h2>`
      return alerta.classList.add("view_actived")
     }
 
