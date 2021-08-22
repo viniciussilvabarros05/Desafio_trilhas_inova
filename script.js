@@ -425,7 +425,7 @@ function calc_total_comission(a) {
         if (event.target.innerHTML == i.name) {
             i.lista.forEach(j => {
                
-                if (a <= 16.10) {
+                if (j.valor <= 16.10) {
                     porcentagem = 0.1
                 } else {
                     porcentagem = 0.15
@@ -458,6 +458,6 @@ function total_vendas(){
 function total_comission(){
     let array= []
     calc_total_comission(array)
-  
+  console.log(array)
     return array[array.length-1]
 }
