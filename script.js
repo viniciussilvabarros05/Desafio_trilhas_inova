@@ -255,7 +255,7 @@ function Cadastrar(){
 
     console.log(input_name.value)
     if (input_name.value = " "){
-        alerta.innerHTML = "Nome Invalido"
+        alerta.innerHTML = `<h1>Nome Invalido<h2>`
         return alerta.classList.add('view_actived')
     }
     if(name ==""){
