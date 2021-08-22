@@ -253,7 +253,11 @@ let atendentes = [
 function Cadastrar(){
     const name = atendentes.filter((i) => { return i.name == input_name.value })
 
-    console.log(name)
+    console.log(input_name.value)
+    if (input_name.value = " "){
+        alerta.innerHTML = "Nome Invalido"
+        return alerta.classList.add('view_actived')
+    }
     if(name ==""){
         let newUser={
             name:input_name.value,
