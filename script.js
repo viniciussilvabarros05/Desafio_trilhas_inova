@@ -7,32 +7,35 @@ let input_name = document.getElementById("name")
 let product = document.getElementById("product")
 let alerta = document.querySelector(".alerta")
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
     let listSave = JSON.parse(localStorage.getItem("list"))
-  
-    if(listSave){
-        atendentes = listSave
 
+   
+        if (listSave) {
+            atendentes = listSave
 
-        atendentes.forEach(i=>{
+            for(let i = 1; i < atendentes.length; i++){
+               
+                lista_atendentes.innerHTML +=`
+              
+                <tbody>
+                    <th onclick="back()">${atendentes[i].name}</th>
+                </tbody>`       
+            }
 
-            lista_atendentes.innerHTML += `
-          <tbody>
-              <th onclick="back()">${i.name}</th>
-          </tbody>`
-      
-      })
-        
-    }
-  return atendentes
+            return atendentes
+        } 
+   
+
+    return atendentes
 })
 
 
 
-function save(){
+function save() {
 
-    localStorage.setItem("list",JSON.stringify(atendentes))
-  
+    localStorage.setItem("list", JSON.stringify(atendentes))
+
 }
 
 let list_product = [
@@ -157,25 +160,38 @@ let list_product = [
     },
 ]
 
-let atendentes = [{}]
+let atendentes = [{
+    name: "Vinicius Silva",
+    lista: [],
+    table: ` <table id = "table">
+    <thead>
+        <th>nome</th>
+        <th>preço</th>
+        <th>comissão</th>
+    </thead>
+   
+</table>
+
+`
+}]
 
 
 
-  
 
 
-function Cadastrar(){
+
+function Cadastrar() {
     const name = atendentes.filter((i) => { return i.name == input_name.value })
 
     console.log(input_name.value)
-    if (input_name.value == ""){
+    if (input_name.value == "") {
         alerta.innerHTML = `<h2>Nome Invalido</h2>`
         return alerta.classList.add('view_actived')
     }
 
-    if(name ==""){
-        let newUser={
-            name:input_name.value,
+    if (name == "") {
+        let newUser = {
+            name: input_name.value,
             lista: [],
             table: `
             <table id = "table">
@@ -192,17 +208,17 @@ function Cadastrar(){
         <tbody>
             <th onclick="back()">${newUser.name}</th>
         </tbody>`
-    
-        atendentes.push(newUser)
-        
 
-    }else{
-     alerta.innerHTML = `<h2>Atendente já registrado</h2>`
-     return alerta.classList.add("view_actived")
+        atendentes.push(newUser)
+
+
+    } else {
+        alerta.innerHTML = `<h2>Atendente já registrado</h2>`
+        return alerta.classList.add("view_actived")
     }
 
     save()
-    
+
 }
 
 function check_clerk() {
@@ -240,7 +256,7 @@ function push_item(a) {
     if (product.value > 20 || !product.value || product.value < 1) {
         return alerta.classList.add("view_actived")
     }
-    
+
     save()
 }
 
@@ -287,7 +303,7 @@ function back() {
 
 function soma(a) {
     let soma = 0
-    let somaTotal =0
+    let somaTotal = 0
     let porcentagem
 
     if (a <= 16.10) {
@@ -295,7 +311,7 @@ function soma(a) {
     } else {
         porcentagem = 0.15
     }
-    
+
     soma = a * porcentagem
     const formatado = soma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
     return formatado
@@ -310,14 +326,14 @@ function total(a) {
     let results = []
     let result = []
 
-   
+
 
     atendentes.forEach(i => {
         if (event.target.innerHTML == i.name) {
             i.lista.forEach(j => {
 
                 results.push(j.valor)
-                
+
 
                 let sum = results.reduce((total, value, index, array) => {
                     return total + value
@@ -325,31 +341,31 @@ function total(a) {
 
                 const formatTotal = sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                 a.push(formatTotal)
-                
+
             })
         }
     })
-  
+
 }
 function calc_total_comission(a) {
     let results = []
     let porcentagem
 
-    
+
 
     atendentes.forEach(i => {
         if (event.target.innerHTML == i.name) {
             i.lista.forEach(j => {
-               
+
                 if (j.valor <= 16.10) {
                     porcentagem = 0.1
                 } else {
                     porcentagem = 0.15
                 }
-                
 
-                results.push(j.valor*porcentagem)
-                
+
+                results.push(j.valor * porcentagem)
+
 
                 let sum = results.reduce((total, value, index, array) => {
                     return total + value
@@ -357,23 +373,23 @@ function calc_total_comission(a) {
 
                 const formatTotal = sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                 a.push(formatTotal)
-                
+
             })
         }
     })
-  
+
 }
 
 
-function total_vendas(){
-    let array= []
+function total_vendas() {
+    let array = []
     total(array)
-   
-    return array[array.length-1]
+
+    return array[array.length - 1]
 }
-function total_comission(){
-    let array= []
+function total_comission() {
+    let array = []
     calc_total_comission(array)
-  
-    return array[array.length-1]
+
+    return array[array.length - 1]
 }
