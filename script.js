@@ -7,6 +7,33 @@ let input_name = document.getElementById("name")
 let product = document.getElementById("product")
 let alerta = document.querySelector(".alerta")
 
+document.addEventListener("DOMContentLoaded", ()=>{
+    let listSave = JSON.parse(localStorage.getItem("list"))
+  
+    if(listSave){
+        atendentes = listSave
+
+
+        atendentes.forEach(i=>{
+
+            lista_atendentes.innerHTML += `
+          <tbody>
+              <th onclick="back()">${i.name}</th>
+          </tbody>`
+      
+      })
+        
+    }
+  return atendentes
+})
+
+
+
+function save(){
+
+    localStorage.setItem("list",JSON.stringify(atendentes))
+  
+}
 
 let list_product = [
     {
@@ -130,123 +157,10 @@ let list_product = [
     },
 ]
 
-let atendentes = [
-    {
-      
-        name: "Vinicius Silva",
-        lista: [],
-        table: ` <table id = "table">
-        <thead>
-            <th>nome</th>
-            <th>preço</th>
-            <th>comissão</th>
-        </thead>
-       
-    </table>
-   
-    `
-    },
-    {
-       
-        name: "Mateus Gomes",
-        lista: [],
-        table: `<table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-       
-    </table>
-   
-    
-    `
-    },
-    {
-       
-        name: "Rosângela Alves",
-        lista: [],
-        table: `
-        <table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-        </table>
-       
-    
-       `
-    },
-
-    {
-      
-        name: "Maicon Santos",
-        lista: [],
-        table: `
-        <table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-        </table>
-       
-    
-       `
-    },
-    {
-  
-        name: "Gabriel Antonio",
-        lista: [],
-        table: `
-        <table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-        </table>
-       
-    
-       `
-    },
-    {
-       
-        name: "Joana Alves",
-        lista: [],
-        table: `
-        <table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-        </table>
-       
-    
-       `
-    },
-    {
-       
-        name: "Marcela Diniz",
-        lista: [],
-        table: `
-        <table id = "table">
-        <th>nome</th>
-        <th>preço</th>
-        <th>comissão</th>
-           
-        </table>
-       
-    
-       `
-    }]
+let atendentes = [{}]
 
 
-    atendentes.forEach(i=>{
 
-        lista_atendentes.innerHTML += `
-      <tbody>
-          <th onclick="back()">${i.name}</th>
-      </tbody>`
-  
-  })
   
 
 
@@ -281,13 +195,14 @@ function Cadastrar(){
     
         atendentes.push(newUser)
         
+
     }else{
      alerta.innerHTML = `<h2>Atendente já registrado</h2>`
      return alerta.classList.add("view_actived")
     }
 
-     
-
+    save()
+    
 }
 
 function check_clerk() {
@@ -325,6 +240,8 @@ function push_item(a) {
     if (product.value > 20 || !product.value || product.value < 1) {
         return alerta.classList.add("view_actived")
     }
+    
+    save()
 }
 
 
@@ -416,7 +333,6 @@ function total(a) {
 }
 function calc_total_comission(a) {
     let results = []
-    let result = []
     let porcentagem
 
     
@@ -458,6 +374,6 @@ function total_vendas(){
 function total_comission(){
     let array= []
     calc_total_comission(array)
-  console.log(array)
+  
     return array[array.length-1]
 }

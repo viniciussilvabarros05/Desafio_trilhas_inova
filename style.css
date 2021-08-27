@@ -1,56 +1,63 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
     position: relative;
     display: grid;
-    grid-template-areas: 
-                        "  header main" 
-                        "  header main" 
-                        "  header main"
-                     ;
-                     
-                     
-                     
+    grid-template-areas: "  header main" "  header main" "  header main";
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 10px;
     width: 50%;
-    min-width:600px;
+    min-width: 600px;
     margin: auto;
 }
 
-header{
+header {
     padding: 5px;
     position: relative;
     border-radius: 0.5rem;
     text-align: center;
     color: black;
-    background-color:rgba(201, 150, 23, 0.748) ;
+    background-color: rgba(201, 150, 23, 0.748);
     grid-area: header;
 }
 
-#form{
-   
+#form {
     height: 200px;
     position: relative;
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     gap: 10px;
     margin: 1rem;
-    
-}
-#form input{
-    height: 15%;
-    
 }
 
-#button{
+#form input {
     height: 15%;
 }
-#footer_form{
+
+#button {
+    font-weight: 600;
+    height: 15%;
+}
+
+#btCadastro {
+    background-color: rgb(201, 150, 23);
+    border: white solid 2px;
+    color: white;
+    font-weight: 600;
+    height: 15%;
+}
+
+#btCadastro:hover {
+    background-color: white;
+    border-color: rgb(201, 150, 23);
+    color:rgb(201, 150, 23);
+}
+
+#footer_form {
     display: flex;
     justify-content: space-evenly;
     position: absolute;
@@ -59,7 +66,7 @@ header{
     right: 0;
 }
 
-.alerta{
+.alerta {
     color: rgb(107, 80, 12);
     margin: auto;
     font-size: 10px;
@@ -70,50 +77,52 @@ header{
     bottom: 50px;
 }
 
-main{
+main {
     position: relative;
     background-color: rgba(243, 233, 165, 0.672);
     grid-area: main;
 }
-#atendentes{
+
+#atendentes {
     font-weight: 800;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(0, 0, 0);
     background-color: rgb(211, 163, 75);
 }
-#atendentes td{
+
+#atendentes td {
     background-color: rgb(253, 203, 75)
 }
 
-th:hover{
+th:hover {
     background-color: rgb(255, 255, 255);
 }
-.model{
+
+.model {
     display: none;
     visibility: hidden;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.468);
-    width: 98%;
+    width: 100vw;
     min-width: 200px;
     height: 100vh;
-    position: absolute;
-    
-   
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-.view_actived{
+
+.view_actived {
     visibility: visible;
     display: block;
 }
-.button_model{
+
+.button_model {
     margin: 50px;
     width: 150px;
     height: 50px;
-  
 }
 
-
-table{
-    
+table {
     margin: auto;
     margin-bottom: 10px;
     width: 90%;
@@ -122,40 +131,34 @@ table{
     background-color: rgb(201, 150, 23);
     min-width: 50px;
     border-radius: 0.8rem;
-   
-    
 }
 
-#table{
-   width: 90%;
+#table {
+    width: 50vw;
 }
 
-table th{
+table th {
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.72);
-   
-}
-footer{
-    grid-area: footer;
-    background-color:rgb(245, 245, 245);
 }
 
-@media (max-width: 536px){
-    body{
+footer {
+    grid-area: footer;
+    background-color: rgb(245, 245, 245);
+}
+
+@media (max-width: 536px) {
+    body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        min-width:300px;
+        min-width: 300px;
     }
-
-    .model{
+    .model {
         position: absolute;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
         height: 100%;
     }
-
-    
 }
