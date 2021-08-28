@@ -10,22 +10,22 @@ let alerta = document.querySelector(".alerta")
 document.addEventListener("DOMContentLoaded", () => {
     let listSave = JSON.parse(localStorage.getItem("list"))
 
-   
-        if (listSave) {
-            atendentes = listSave
 
-            for(let i = 1; i < atendentes.length; i++){
-               
-                lista_atendentes.innerHTML +=`
+    if (listSave) {
+        atendentes = listSave
+
+        for (let i = 1; i < atendentes.length; i++) {
+
+            lista_atendentes.innerHTML += `
               
                 <tbody>
                     <th onclick="back()">${atendentes[i].name}</th>
-                </tbody>`       
-            }
+                </tbody>`
+        }
 
-            return atendentes
-        } 
-   
+
+    }
+
 
     return atendentes
 })
@@ -183,7 +183,7 @@ let atendentes = [{
 function Cadastrar() {
     const name = atendentes.filter((i) => { return i.name == input_name.value })
 
-    console.log(input_name.value)
+
     if (input_name.value == "") {
         alerta.innerHTML = `<h2>Nome Invalido</h2>`
         return alerta.classList.add('view_actived')
@@ -291,8 +291,8 @@ function back() {
             }
             table.innerHTML += `<table>
                 <th>Total de Vendas</th>
-                <th id = "total_vendas">${total_vendas()}</th>
-                <th id="total_comissão">${total_comission()}</th>
+                <th id = "total_vendas">${total()}</th>
+                <th id="total_comissão">${calc_total_comission()}</th>
              </table>`
 
         }
@@ -322,9 +322,9 @@ function soma(a) {
 
 
 
-function total(a) {
+function total() {
     let results = []
-    let result = []
+    let sumTotal
 
 
 
@@ -340,18 +340,20 @@ function total(a) {
                 })
 
                 const formatTotal = sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                a.push(formatTotal)
+               sumTotal =formatTotal
 
             })
         }
     })
 
+    return sumTotal
+
 }
-function calc_total_comission(a) {
+function calc_total_comission() {
     let results = []
     let porcentagem
 
-
+    let sumComission
 
     atendentes.forEach(i => {
         if (event.target.innerHTML == i.name) {
@@ -372,24 +374,12 @@ function calc_total_comission(a) {
                 })
 
                 const formatTotal = sum.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                a.push(formatTotal)
-
+                sumComission = formatTotal
             })
+
         }
     })
 
+    return sumComission
 }
 
-
-function total_vendas() {
-    let array = []
-    total(array)
-
-    return array[array.length - 1]
-}
-function total_comission() {
-    let array = []
-    calc_total_comission(array)
-
-    return array[array.length - 1]
-}
